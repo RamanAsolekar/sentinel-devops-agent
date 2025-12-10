@@ -1,7 +1,8 @@
 "use client";
 
 import { Spotlight } from "@/components/common/Spotlight";
-import { mockIncidents, Incident } from "@/lib/mockData";
+import { mockIncidents } from "@/lib/mockData";
+import type { Incident } from "@/lib/mockData";
 import { AlertTriangle, CheckCircle, Clock, XCircle, ChevronRight, Filter } from "lucide-react";
 import { Button } from "@/components/common/Button";
 import { cn } from "@/lib/utils";
