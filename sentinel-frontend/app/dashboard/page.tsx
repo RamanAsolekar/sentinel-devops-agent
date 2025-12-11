@@ -1,29 +1,106 @@
+"use client";
+
 import { HealthSummary } from "@/components/dashboard/HealthSummary";
 import { ServiceGrid } from "@/components/dashboard/ServiceGrid";
+import { MetricsCharts } from "@/components/dashboard/MetricsCharts";
+import { IncidentTimeline } from "@/components/dashboard/IncidentTimeline";
+import { AgentReasoningPanel } from "@/components/dashboard/AgentReasoningPanel";
 import { mockMetrics, mockServices } from "@/lib/mockData";
+import { useMetrics } from "@/hooks/useMetrics";
+import { useIncidents } from "@/hooks/useIncidents";
+import { useEffect, useState } from "react";
 
 export default function DashboardPage() {
+    const { metrics } = useMetrics();
+    const { incidents, activeIncidentId, setActiveIncidentId } = useIncidents();
+    const [liveServices, setLiveServices] = useState(mockServices);
+
+    // Merge real-time metrics into services
+    useEffect(() => {
+        setLiveServices(prev => prev.map(service => {
+            const realTime = metrics[service.id];
+            if (realTime) {
+                const newTrend = realTime.history.length > 0
+                    ? realTime.history.slice(-12).map(p => p.value)
+                    : service.trend;
+
+                return {
+                    ...service,
+                    latency: realTime.currentResponseTime,
+                    cpu: realTime.currentCpu,
+                    status: realTime.currentErrorRate > 0.5 ? "down" : (realTime.currentErrorRate > 0.2 ? "degraded" : "healthy"),
+                    trend: newTrend.length > 0 ? newTrend : service.trend,
+                };
+            }
+            return service;
+        }));
+    }, [metrics]);
+
+    const activeIncident = incidents.find(i => i.id === activeIncidentId);
+
     return (
         <div className="space-y-8 pb-20">
             <div>
-                <h1 className="text-3xl font-bold tracking-tight mb-2">Dashboard</h1>
+                <h1 className="text-3xl font-bold tracking-tight mb-2 text-white">Dashboard</h1>
                 <p className="text-muted-foreground">Real-time overview of your system health and agent activities.</p>
             </div>
 
             <HealthSummary
                 uptime={mockMetrics.uptime}
-                servicesUp={mockMetrics.servicesUp}
-                totalServices={mockMetrics.totalServices}
-                activeIncidents={mockMetrics.activeIncidents}
+                servicesUp={liveServices.filter(s => s.status === "healthy").length}
+                totalServices={liveServices.length}
+                activeIncidents={incidents.filter(i => i.status !== "resolved").length}
             />
 
-            <div>
-                <div className="flex items-center justify-between mb-4">
-                    <h2 className="text-xl font-semibold">Monitored Services</h2>
-                    <span className="text-sm text-muted-foreground">Last updated: Just now</span>
+            {/* Main Content Grid */}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                {/* Left Column: Charts & Services (2/3 width) */}
+                <div className="lg:col-span-2 space-y-8">
+                    <MetricsCharts metrics={metrics} />
+
+                    <div>
+                        <div className="flex items-center justify-between mb-4">
+                            <h2 className="text-xl font-semibold text-white">Monitored Services</h2>
+                            <span className="text-sm text-muted-foreground flex items-center gap-2">
+                                <span className="relative flex h-2 w-2">
+                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                                    <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                                </span>
+                                Live Updates
+                            </span>
+                        </div>
+                        <ServiceGrid services={liveServices} />
+                    </div>
                 </div>
-                <ServiceGrid services={mockServices} />
+
+                {/* Right Column: Timeline & Reasoning (1/3 width) */}
+                <div className="space-y-8">
+                    {/* Agent Reasoning (Sticky if active) */}
+                    {activeIncident && (
+                        <div className="animate-in fade-in slide-in-from-right duration-500">
+                            <div className="flex items-center justify-between mb-2">
+                                <h2 className="text-lg font-semibold text-primary">Sentinel AI Analysis</h2>
+                                <button
+                                    onClick={() => setActiveIncidentId(null)}
+                                    className="text-xs text-muted-foreground hover:text-white"
+                                >
+                                    Close
+                                </button>
+                            </div>
+                            <AgentReasoningPanel incident={activeIncident} />
+                        </div>
+                    )}
+
+                    <div>
+                        <h2 className="text-xl font-semibold text-white mb-4">Incident Timeline</h2>
+                        <IncidentTimeline
+                            incidents={incidents}
+                            onViewReasoning={(id) => setActiveIncidentId(id)}
+                        />
+                    </div>
+                </div>
             </div>
         </div>
     );
 }
+
