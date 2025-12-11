@@ -29,12 +29,12 @@ export function ApiKeySettings() {
                         <div className="relative">
                             <input type="text" value="sk_live_51M..." disabled className="bg-black/30 border border-white/10 rounded px-2 py-1 text-xs font-mono w-32 text-muted-foreground" />
                         </div>
-                        <Button variant="ghost" size="icon" className="h-8 w-8 text-muted-foreground hover:text-white">
-                            <Copy className="h-4 w-4" />
-                        </Button>
-                        <Button variant="ghost" size="icon" className="h-8 w-8 text-muted-foreground hover:text-red-400">
-                            <Trash className="h-4 w-4" />
-                        </Button>
+<Button variant="ghost" size="icon" className="h-8 w-8 text-muted-foreground hover:text-white" aria-label="Copy API key">
+    <Copy className="h-4 w-4" />
+</Button>
+<Button variant="ghost" size="icon" className="h-8 w-8 text-muted-foreground hover:text-red-400" aria-label="Delete API key">
+    <Trash className="h-4 w-4" />
+</Button>
                     </div>
                 </div>
 
