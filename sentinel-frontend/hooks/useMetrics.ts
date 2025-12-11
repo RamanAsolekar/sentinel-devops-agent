@@ -15,7 +15,7 @@ export type ServiceMetrics = {
     currentResponseTime: number;
     currentErrorRate: number;
     currentCpu: number;
-    history: TimeSeriesPoint[]; // Last 60 points (1 hour view typically)
+    history: TimeSeriesPoint[]; // Last 30 points for performance in demo
 };
 
 /**
