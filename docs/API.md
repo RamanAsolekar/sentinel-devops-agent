@@ -1,3 +1,4 @@
+````markdown
 # API Documentation
 
 ## Overview
@@ -352,11 +353,13 @@ if (critical) {
 
 ## 📚 Related Documentation
 
-- [DEVELOPMENT.md](docs/DEVELOPMENT.md) - Backend setup
-- [ARCHITECTURE.md](docs/ARCHITECTURE.md) - System design
+- [DEVELOPMENT.md](DEVELOPMENT.md) - Backend setup
+- [ARCHITECTURE.md](ARCHITECTURE.md) - System design
 - [Backend Code](../backend/index.js)
 
 ---
 
 **Last Updated:** February 1, 2026
 **API Version:** 1.0.0
+
+````

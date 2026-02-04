@@ -1,3 +1,4 @@
+````markdown
 # 📚 Documentation Summary - Apertre 3.0 Submission
 
 ## Overview
@@ -142,63 +143,63 @@ sentinel-devops-agent/
 ## 🎯 Coverage by Use Case
 
 ### For New Contributors
-- ✅ [CONTRIBUTING.md](docs/CONTRIBUTING.md) - Start here
-- ✅ [DEVELOPMENT.md](docs/DEVELOPMENT.md) - Setup guide
+- ✅ [CONTRIBUTING.md](CONTRIBUTING.md) - Start here
+- ✅ [DEVELOPMENT.md](DEVELOPMENT.md) - Setup guide
 - ✅ [GitHub Issue Templates](.github/ISSUE_TEMPLATE/) - How to report
-- ✅ [FAQ.md](docs/FAQ.md) - Quick answers
+- ✅ [FAQ.md](FAQ.md) - Quick answers
 
 ### For Developers
-- ✅ [DEVELOPMENT.md](docs/DEVELOPMENT.md) - Full setup
-- ✅ [ARCHITECTURE.md](docs/ARCHITECTURE.md) - System design
-- ✅ [API.md](docs/API.md) - API reference
+- ✅ [DEVELOPMENT.md](DEVELOPMENT.md) - Full setup
+- ✅ [ARCHITECTURE.md](ARCHITECTURE.md) - System design
+- ✅ [API.md](API.md) - API reference
 - ✅ GitHub workflows - CI/CD
-- ✅ [FAQ.md](docs/FAQ.md) - Troubleshooting
+- ✅ [FAQ.md](FAQ.md) - Troubleshooting
 
 ### For DevOps/Operators
-- ✅ [README.md](README.md) - Quick start
-- ✅ [ARCHITECTURE.md](docs/ARCHITECTURE.md) - System overview
-- ✅ [SECURITY.md](docs/SECURITY.md) - Production setup
-- ✅ [FAQ.md](docs/FAQ.md) - Deployment questions
-- ✅ [ROADMAP.md](docs/ROADMAP.md) - Future features
+- ✅ [README.md](../README.md) - Quick start
+- ✅ [ARCHITECTURE.md](ARCHITECTURE.md) - System overview
+- ✅ [SECURITY.md](SECURITY.md) - Production setup
+- ✅ [FAQ.md](FAQ.md) - Deployment questions
+- ✅ [ROADMAP.md](ROADMAP.md) - Future features
 
 ### For Maintainers
-- ✅ [CONTRIBUTING.md](docs/CONTRIBUTING.md) - Contributor guide
-- ✅ [SECURITY.md](docs/SECURITY.md) - Vulnerability handling
-- ✅ [CODE_OF_CONDUCT.md](docs/CODE_OF_CONDUCT.md) - Community standards
-- ✅ [ROADMAP.md](docs/ROADMAP.md) - Feature tracking
+- ✅ [CONTRIBUTING.md](CONTRIBUTING.md) - Contributor guide
+- ✅ [SECURITY.md](SECURITY.md) - Vulnerability handling
+- ✅ [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) - Community standards
+- ✅ [ROADMAP.md](ROADMAP.md) - Feature tracking
 - ✅ [CONTRIBUTORS.md](CONTRIBUTORS.md) - Team info
 
 ### For Decision Makers
-- ✅ [README.md](README.md) - Project overview
-- ✅ [ARCHITECTURE.md](docs/ARCHITECTURE.md) - Technical details
-- ✅ [ROADMAP.md](docs/ROADMAP.md) - Future vision
-- ✅ [SECURITY.md](docs/SECURITY.md) - Safety & compliance
+- ✅ [README.md](../README.md) - Project overview
+- ✅ [ARCHITECTURE.md](ARCHITECTURE.md) - Technical details
+- ✅ [ROADMAP.md](ROADMAP.md) - Future vision
+- ✅ [SECURITY.md](SECURITY.md) - Safety & compliance
 
 ---
 
 ## 🚀 How to Use This Documentation
 
 ### Quick Start (5 minutes)
-1. Read [README.md](README.md)
+1. Read [README.md](../README.md)
 2. Follow Docker setup
 3. Open http://localhost:3000
 
 ### Set Up Development (30 minutes)
-1. Read [CONTRIBUTING.md](docs/CONTRIBUTING.md)
-2. Follow [DEVELOPMENT.md](docs/DEVELOPMENT.md)
+1. Read [CONTRIBUTING.md](CONTRIBUTING.md)
+2. Follow [DEVELOPMENT.md](DEVELOPMENT.md)
 3. Run local environment
-4. Check [FAQ.md](docs/FAQ.md) for issues
+4. Check [FAQ.md](FAQ.md) for issues
 
 ### Deploy to Production
-1. Review [SECURITY.md](docs/SECURITY.md)
-2. Follow [ARCHITECTURE.md](docs/ARCHITECTURE.md)
-3. Reference [API.md](docs/API.md) for integration
-4. Check [ROADMAP.md](docs/ROADMAP.md) for upcoming features
+1. Review [SECURITY.md](SECURITY.md)
+2. Follow [ARCHITECTURE.md](ARCHITECTURE.md)
+3. Reference [API.md](API.md) for integration
+4. Check [ROADMAP.md](ROADMAP.md) for upcoming features
 
 ### Contribute Code
-1. Read [CODE_OF_CONDUCT.md](docs/CODE_OF_CONDUCT.md)
-2. Follow [CONTRIBUTING.md](docs/CONTRIBUTING.md)
-3. Review [DEVELOPMENT.md](docs/DEVELOPMENT.md)
+1. Read [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)
+2. Follow [CONTRIBUTING.md](CONTRIBUTING.md)
+3. Review [DEVELOPMENT.md](DEVELOPMENT.md)
 4. Use GitHub templates for PRs/issues
 
 ---
@@ -245,7 +246,7 @@ sentinel-devops-agent/
 ### When Creating Release
 1. Update [CONTRIBUTORS.md](CONTRIBUTORS.md) - Add new contributors
 2. Update [ROADMAP.md](ROADMAP.md) - Mark completed items
-3. Update [README.md](README.md) - Update badges/version
+3. Update [README.md](../README.md) - Update badges/version
 4. Create CHANGELOG entry (recommended)
 
 ### When Reporting Issues
@@ -393,3 +394,5 @@ sentinel-devops-agent/
 **Status:** ✅ Complete & Ready
 
 🚀 **Thank you for making Sentinel a world-class open source project!**
+
+````
