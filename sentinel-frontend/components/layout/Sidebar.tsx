@@ -16,7 +16,7 @@ import {
     X,
 } from "lucide-react";
 import { SentinelLogo } from "@/components/common/SentinelLogo";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navItems = [
@@ -123,14 +123,23 @@ export function Sidebar() {
     const [collapsed, setCollapsed] = useState(false);
     const [mobileOpen, setMobileOpen] = useState(false);
 
+    const prevPathname = useRef(pathname);
+
     // Close mobile menu on route change
     useEffect(() => {
-        if (mobileOpen) {
-            // Defer execution to avoid synchronous state update in effect
-            const timer = setTimeout(() => setMobileOpen(false), 0);
-            return () => clearTimeout(timer);
+        let timer: NodeJS.Timeout;
+        if (prevPathname.current !== pathname) {
+            if (mobileOpen) {
+                // Defer execution to avoid synchronous state update in effect
+                timer = setTimeout(() => setMobileOpen(false), 0);
+            }
+            prevPathname.current = pathname;
         }
-    }, [pathname, mobileOpen]);
+        return () => {
+            if (timer) clearTimeout(timer);
+        };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [pathname]);
 
     // Close mobile menu on resize to desktop
     useEffect(() => {
